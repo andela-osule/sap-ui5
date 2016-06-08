@@ -88,16 +88,15 @@
 								<content>
 									<List id="productsList"
 										headerText="{i18n>productListTitle}"
-										items="{
-											path: '/ProductSet',
-											sorter: {
-												path: 'Category',
-												group: true
-											}
-										}"
 										growing="true"
 										growingThreshold="5"
-										growingScrollToLoad="false">
+										growingScrollToLoad="false"
+										items="{
+											path: '/ProductSet',
+											parameters: {
+												expand: 'ToSupplier'
+											}
+										}">
 											<headerToolbar>
 												<Toolbar>
 													<Title text="{i18n>productListTitle}"/>
@@ -131,6 +130,11 @@
 														formatter : '.formatter.delivery'
 													}"/>
 												</firstStatus>
+												<secondStatus>
+													<ObjectStatus
+														title="{i18n>statusDeliveryFrom}"
+														text="{ToSupplier/Address/City}"/>
+												</secondStatus>
 											</ObjectListItem>
 										</items>
 									</List>
