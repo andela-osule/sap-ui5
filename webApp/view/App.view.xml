@@ -86,14 +86,18 @@
 							<IconTabFilter
 								text="{i18n>dataBindingFilter}" key="db">
 								<content>
-									<List
+									<List id="productsList"
 										headerText="{i18n>productListTitle}"
-										id="productsList" items="{
-										path: '/ProductSet',
-										sorter: {
-											path: 'Category',
-											group: true
-										}}">
+										items="{
+											path: '/ProductSet',
+											sorter: {
+												path: 'Category',
+												group: true
+											}
+										}"
+										growing="true"
+										growingThreshold="5"
+										growingScrollToLoad="false">
 											<headerToolbar>
 												<Toolbar>
 													<Title text="{i18n>productListTitle}"/>
@@ -115,7 +119,9 @@
 													}
 												}"
 												numberState="{= ${Price} > 500 ? 'Error' : 'Success'}"
-												intro="{ProductID}">
+												intro="{ProductID}"
+												press="onItemSelected"
+												type="Active">
 												<firstStatus>
 													<ObjectStatus text="{
 														parts: [
@@ -128,6 +134,16 @@
 											</ObjectListItem>
 										</items>
 									</List>
+									<Panel id="productDetailsPanel"
+										headerText="{i18n>panelHeader}"
+										visible="false">
+										<l:Grid>
+											<Text text="{i18n>ProductID}: {ProductID}" />
+											<Text text="{i18n>ProductName}: {Name}" />
+											<Text text="{i18n>Description}:\n {Description}" />
+											<Text text="{i18n>Price}: {Price}"/>
+										</l:Grid>
+									</Panel>
 								</content>
 							</IconTabFilter>
 						</items>
