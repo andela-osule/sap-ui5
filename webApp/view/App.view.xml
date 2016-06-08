@@ -12,7 +12,8 @@
 				<content>
 					<IconTabBar
 						id="idTopLevelIconTabBar"
-						class="sapUiResponsiveContentPadding">
+						class="sapUiResponsiveContentPadding"
+						selectedKey="db">
 						<items>
 							<IconTabFilter id="start" text="{i18n>gettingStartedFilter}">
 								<Carousel>
@@ -76,6 +77,21 @@
 										text="{i18n>layoutDraftButton}"
 										icon="sap-icon://save"/>
 								</Toolbar>
+							</IconTabFilter>
+							<IconTabFilter
+								text="{i18n>dataBindingFilter}" key="db">
+								<content>
+									<List
+										headerText="{i18n>productListTitle}"
+										items="{/ProductSet}">
+										<items>
+											<ObjectListItem
+												title="{Name}"
+												number="{Price}"
+												intro="{ProductID}" />
+										</items>
+									</List>
+								</content>
 							</IconTabFilter>
 						</items>
 					</IconTabBar>
